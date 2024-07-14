@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>calculate 2 Numbers</title>
+      <link rel="stylesheet" href="assets/css/custom2.css" >
+<script>
+   function addTwo(num1, num2) {
+     if (isNaN(num1) || isNaN(num2)) {
+       document.getElementById("answer").innerHTML = "Please enter valid numbers";
+     } else {
+       var total = num1 + num2;
+       document.getElementById("answer").innerHTML = "The sum is " + total;
+     }
+   }
+   
+   function subtractTwo(num1, num2) {
+     if (isNaN(num1) || isNaN(num2)) {
+       document.getElementById("answer").innerHTML = "Please enter valid numbers";
+     } else {
+       var total = num1 - num2;
+       document.getElementById("answer").innerHTML = "The subtraction is " + total;
+     }
+   }
+   
+   function multiplicationTwo(num1, num2) {
+     if (isNaN(num1) || isNaN(num2)) {
+       document.getElementById("answer").innerHTML = "Please enter valid numbers";
+     } else {
+       var total = num1 * num2;
+       document.getElementById("answer").innerHTML = "The multiplication is " + total;
+     }
+   }
+   
+   function divisionTwo(num1, num2) {
+     if (isNaN(num1) || isNaN(num2) || num2 === 0) {
+       document.getElementById("answer").innerHTML = "Please enter valid numbers and non-zero for division";
+     } else {
+       var total = num1 / num2;
+       document.getElementById("answer").innerHTML = "The division is " + total;
+     }
+   }
+   </script>
+
+	</head>
+
+	<body onload="FirstNum.focus()" >
+
+	     <input type = "text"  id = "FirstNum" size="20"/><br/>
+	     <input type = "text"  id = "SecondNum" size="20"/><br/>
+
+	      <button type="button" class="btn btn-primary" onclick= "addTwo(Number(FirstNum.value), Number(SecondNum.value))">+</button>
+         <button type="button" class="btn btn-secondary" onclick= "substractTwo(Number(FirstNum.value), Number(SecondNum.value))">-</button>
+         <button type="button" class="btn btn-dark" onclick= "multiplicationTwo(Number(FirstNum.value), Number(SecondNum.value))">*</button>
+         <button type="button" class="btn btn-info" onclick= "divisionTwo(Number(FirstNum.value), Number(SecondNum.value))">/</button>
+
+	     <span id="answer"></span>
+
+
+	</body>
+</html>

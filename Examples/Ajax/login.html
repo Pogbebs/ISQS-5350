@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navigation">
+        <a href="create_account.html">Create Account</a>
+        <a href="login.html">Login</a>
+        <a href="index.html">Home</a>
+        <a href="read.py">View Users</a> <!-- Link to your read.py -->
+        <a href="#" id="logoutButton" style="float:right;" > &nbsp;Logout</a> <!-- Logout link -->
+        <span id="userDisplay" style="float:right;"></span> <!-- Placeholder for logged-in user's name -->
+    </div>
+<h1>LOGIN </h1>
+<div class="login-container">
+    <h2>Enter Your Info</h2>
+    <form id="loginForm">
+        <label for="loginUsername">Username:</label>
+        <input type="text" id="loginUsername" name="username" required>
+        
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" name="password" required>
+        
+        <button type="button" onclick="loginUser()">Login</button>
+    </form>
+    <div id="loginResult" class="result"></div>
+</div>
+
+<script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Guessing Game</title>
+  <style>
+    .progress-container {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body onload="myGuess.focus()">
+
+  <div class="container">
+    <h1>Welcome to the Guessing Game</h1>
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#gameInstructionsCollapse"
+    aria-expanded="false" aria-controls="gameInstructionsCollapse">
+    Show Instructions
+    </button>
+     <!-- Collapse content with game instructions -->
+     <div class="collapse" id="gameInstructionsCollapse">
+        <div class="card card-body">
+          Guess a number (between 1 and 500)
+        </div>
+      </div>
+    <p><span id="myFeedback">&nbsp;</span></p>
+
+    <div class="row">
+      <div class="col-md-4">
+        
+        <input id="myGuess" class="form-control" type="text" /><br />
+      </div>
+    </div>
+
+
+    <button id="restartButton" class="btn btn-warning" onclick="restartGame()">Restart</button>
+    <button id="mybutton" class="btn btn-success" onclick="check_it()" type="button">Guess</button><br>
+
+    <div class="progress-container">
+      <label for="guessProgress">Attempts</label>
+      <div class="progress">
+        <div id="guessProgress" class="progress-bar bg-success" role="progressbar" style="width: 0%;" aria-valuenow="0"
+          aria-valuemin="0" aria-valuemax="10">0/10</div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="successModalLabel">Congratulations!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            You've guessed the correct number in <span id="attemptsCount"></span> tries!
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" onclick="location.reload()">Restart Game</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    var randomNum = Math.round(Math.random() * 499) + 1; //Global variable - value 1-500
+    document.title = "Guessing Game " + randomNum; //cheat!
+    var guesses = 0; //Global variable
+
+    function check_it() {
+      guesses++;
+      var myGuess = document.getElementById("myGuess").value;
+      var myFeedback = document.getElementById("myFeedback");
+      var myButton = document.getElementById("mybutton");
+      var guessProgress = document.getElementById("guessProgress");
+
+      // Update progress bar
+      var progress = (guesses / 10) * 100;
+      guessProgress.style.width = progress + "%";
+      guessProgress.setAttribute("aria-valuenow", guesses);
+      guessProgress.innerText = guesses + "/10";
+
+      // Update progress bar color
+      if (guesses <= 3) {
+        guessProgress.classList.remove("bg-warning", "bg-danger");
+        guessProgress.classList.add("bg-success");
+      } else if (guesses <= 7) {
+        guessProgress.classList.remove("bg-success", "bg-danger");
+        guessProgress.classList.add("bg-warning");
+      } else {
+        guessProgress.classList.remove("bg-success", "bg-warning");
+        guessProgress.classList.add("bg-danger");
+      }
+
+      if (parseInt(myGuess) === randomNum) {
+        // Correct guess
+        myFeedback.innerHTML = "Congratulations! You've guessed it right in " + guesses + " tries!";
+        myButton.disabled = true; // Disable the button after a correct guess
+
+        // Update modal text and show modal
+        document.getElementById("attemptsCount").innerText = guesses;
+        var successModal = new bootstrap.Modal(document.getElementById("successModal"));
+        successModal.show();
+      } else {
+        // Incorrect guess
+        if (guesses >= 10) {
+          // User has reached the maximum number of tries
+          myFeedback.innerHTML = "Sorry, you've lost. The correct number was " + randomNum + ".";
+          myButton.disabled = true; // Disable the button after 10 tries
+        } else {
+          // Provide feedback for the guess
+          if (randomNum < parseInt(myGuess)) {
+            myFeedback.innerHTML = "Too high! Try again.";
+          } else {
+            myFeedback.innerHTML = "Too low! Try again.";
+          }
+        }
+      }
+    }
+
+    function restartGame() {
+      guesses = 0;
+      randomNum = Math.floor(Math.random() * 500) + 1;
+      document.getElementById("myFeedback").innerHTML = "";
+      document.getElementById("myGuess").value = "";
+      document.getElementById("mybutton").disabled = false;
+
+      // Reset progress bar
+      var guessProgress = document.getElementById("guessProgress");
+      guessProgress.style.width = "0%";
+      guessProgress.setAttribute("aria-valuenow", 0);
+      guessProgress.innerText = "0/10";
+      guessProgress.classList.remove("bg-warning", "bg-danger");
+      guessProgress.classList.add("bg-success");
+    }
+  </script>
+</body>
+
+</html>
+

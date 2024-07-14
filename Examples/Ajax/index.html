@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Home Page</title>
+</head>
+<body>
+    <div class="navigation">
+        <a href="create_account.html">Create Account</a>
+        <a href="login.html">Login</a>
+        <a href="index.html">Home</a>
+        <a href="read.py">View Users</a> <!-- Link to your read.py -->
+        <a href="#" id="logoutButton" style="float:right;" > &nbsp;Logout</a> <!-- Logout link -->
+        <span id="userDisplay" style="float:right;"></span> <!-- Placeholder for logged-in user's name -->
+    </div>
+    <section id="introduction">
+        <h1>Welcome to Our User Management System</h1>
+        <p>This application is designed to demonstrate a basic user management system where users can create an account, log in, and view a list of users. The system is built using HTML, CSS, JavaScript, Python, and MySQL.</p>
+    </section>
+    <section id="features">
+        <h2>Features</h2>
+        <ul>
+            <li><strong>User Registration:</strong> New users can sign up by providing a username and password.</li>
+            <li><strong>User Login:</strong> Existing users can log in using their credentials.</li>
+            <li><strong>User List Display:</strong> A list of all registered users can be viewed.</li>
+        </ul>
+    </section>
+    <section id="how-it-works">
+        <h2>How It Works</h2>
+        <h3>Creating an Account</h3>
+        <p>When a new user fills out the form on the 'Create Account' page and submits it, JavaScript sends the username and password to a Python script on the server. The script hashes the password for security, then stores the username and hashed password in a MySQL database.</p>
+        <h3>Logging In</h3>
+        <p>When a returning user enters their username and password on the 'Login' page, JavaScript sends these credentials to another Python script on the server. This script checks the database to see if an account with that username exists and compares the provided password with the stored hashed password using bcrypt.</p>
+        <h3>Viewing User List</h3>
+        <p>When visiting the 'View Users' page, the server-side Python script retrieves all registered users from the database and displays them. Passwords are not displayed for security reasons.</p>
+    </section>
+    <section id="security">
+        <h2>Security Measures</h2>
+        <p>We take security seriously. Here are some of the measures in place:</p>
+        <ul>
+            <li>Passwords are hashed using bcrypt before being stored in the database.</li>
+            <li>User inputs are sanitized to prevent SQL injection and XSS attacks.</li>
+            <li>Communication with the server should be done over HTTPS (not covered in this demo for simplicity).</li>
+        </ul>
+    </section>
+<script src="login.js"></script>
+
+</body>
+
+</html>
+
