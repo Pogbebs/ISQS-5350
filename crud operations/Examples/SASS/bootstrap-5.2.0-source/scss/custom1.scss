@@ -1,0 +1,13 @@
+$white: #ffffff;
+
+$theme-colors: (
+    "light":      #f3b12a,
+    "dark":       #1b0d2e,
+    "primary":    #0cab59,
+    "secondary":  #fef000,
+    "info":       #f26702,
+    "success":    #00d129,
+    "warning":    #ffcf49,
+    "danger":     #ff2553,
+);
+@import "bootstrap"

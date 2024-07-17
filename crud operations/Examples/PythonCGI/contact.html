@@ -128,12 +128,21 @@
                     <div class="col-lg-5 col-xl-5 contact-form wow fadeInLeft" data-wow-delay="0.1s">
                         <h2 class="display-5 text-white mb-2">Get in Touch</h2>
                         <p class="mb-4 text-white">Questions about NxTGeN Solar Solutions.</p>
-                        <form>
+
+                        <form action="SayHello.py" class="simple-form" method="get">
                             <div class="row g-3">
                                 <div class="col-lg-12 col-xl-6">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control bg-transparent border border-white" id="name" placeholder="Your Name">
-                                        <label for="name">Your Name</label>
+                                        <input id="fname" class="form-control bg-transparent border border-white"   maxlength="30" id="fname" placeholder="First Name"
+                                        required="true" type="text">
+                                        <label for="fname">First Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-xl-6">
+                                    <div class="form-floating">
+                                        <input id="fname" class="form-control bg-transparent border border-white"   maxlength="30" id="lname" placeholder="Last Name"
+                                        required="true" type="text">
+                                        <label for="lname">Last Name</label>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-xl-6">
@@ -167,7 +176,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-light text-primary w-100 py-3">Send Message</button>
+                                    <button class="btn btn-light text-primary w-100 py-3" type="submit">Send Message</button>
                                 </div>
                             </div>
                         </form>
